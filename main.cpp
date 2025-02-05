@@ -268,7 +268,7 @@ void displayStats() {
   }
 }
 
-void skillsMenu() {
+/*void skillsMenu() {
   tft.fillScreen(BLACK);
   tft.setCursor(40, 10);
   tft.setTextSize(2);
@@ -326,6 +326,42 @@ void skillsMenu() {
 
   tft.print("Survival"); tft.print("  ("); tft.print(calculateModifier(wisdom));  tft.print(")\n");
   tft.setCursor(40, 20);
+
+
+  while (true) {
+    if (digitalRead(UP_BUTTON) == LOW || digitalRead(DOWN_BUTTON) == LOW || digitalRead(SELECT_BUTTON) == LOW) {
+      delay(200);
+      drawMenu();
+      break;
+    }
+  }
+}
+*/
+void skillsMenu() {
+  tft.fillScreen(BLACK);
+  tft.setCursor(40, 10);
+  tft.setTextSize(2);
+  tft.setTextColor(WHITE);
+
+  String skills[] = {"Acrobatics", "Animal Handling", "Arcana", "Athletics", "Deception",
+                     "History", "Insight", "Intimidation", "Investigation", "Medicine",
+                     "Nature", "Perception", "Performance", "Persuasion", "Religion",
+                     "Sleight of Hand", "Stealth", "Survival"};
+
+  int modifiers[] = {calculateModifier(dexterity), calculateModifier(wisdom), calculateModifier(intelligence), 
+                     calculateModifier(strength), calculateModifier(charisma), calculateModifier(intelligence), 
+                     calculateModifier(wisdom), calculateModifier(charisma), calculateModifier(intelligence), 
+                     calculateModifier(wisdom), calculateModifier(intelligence), calculateModifier(wisdom), 
+                     calculateModifier(charisma), calculateModifier(charisma), calculateModifier(intelligence), 
+                     calculateModifier(dexterity), calculateModifier(dexterity), calculateModifier(wisdom)};
+
+  for (int i = 0; i < 18; i++) {
+    tft.setCursor(40, 20 + (i * 27));
+    tft.print(skills[i]);
+    tft.print("  (");
+    tft.print(modifiers[i]);
+    tft.print(")\n");
+  }
 
   while (true) {
     if (digitalRead(UP_BUTTON) == LOW || digitalRead(DOWN_BUTTON) == LOW || digitalRead(SELECT_BUTTON) == LOW) {
