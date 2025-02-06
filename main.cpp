@@ -356,7 +356,7 @@ void skillsMenu() {
                      calculateModifier(dexterity), calculateModifier(dexterity), calculateModifier(wisdom)};
 
   for (int i = 0; i < 18; i++) {
-    tft.setCursor(40, 20 + (i * 27));
+    tft.setCursor(40, 20 + (i * 25));
     tft.print(skills[i]);
     tft.print("  (");
     tft.print(modifiers[i]);
